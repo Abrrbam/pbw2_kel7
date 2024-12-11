@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateKostRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
+use function Laravel\Prompts\table;
+
 class KostController extends Controller
 {
     /**
@@ -98,8 +100,15 @@ class KostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kost $kost)
+    public function destroy($id)
     {
-        //
+        $deleteData = DB::table('kosts')->select('foto')
+                ->where('id_kost', $id)
+                ->get();
+        if ($deleteData[0]->foto) {
+            Storage::delete($deleteData[0]->foto);
+        }
+        Kost::destroy($id);
+        return redirect('/kost');
     }
 }
