@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class EnsureUserHasRole
@@ -19,5 +20,19 @@ class EnsureUserHasRole
             return $next($request);
         }
         abort(403);
+
+
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
+        $userRole = Auth::user()->role;
+
+        if ($userRole == 'admin') {
+            return redirect()->route('admin');
+        }
+        if ($userRole == 'pencari') {
+            return redirect()->route('pencari');
+        }
     }
 }
