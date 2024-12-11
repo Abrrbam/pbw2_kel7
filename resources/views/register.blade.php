@@ -70,7 +70,7 @@
         <p>sebagai</p> 
         <form action="{{ url('register') }}" method="post">
             @csrf
-            <select id="sebagai" name="sebagai" required>
+            <select id="as_a" name="as_a" required>
                 <option value="1">Pencari Kost</option>
                 <option value="2">Pemilik Kost</option>
             </select>
@@ -78,7 +78,7 @@
             <input type="text" id="username" name="username" placeholder="Username" required>
             <input type="email" id="email" name="email" placeholder="Email" required>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <input type="password" id="confirm_password" name="confirm_password" placeholder="Konfirmasi Password" required>
+            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password" required>
             <button type="submit" class="daftar" name="daftar">Daftar</button>
         </form>
         <p>Sudah punya akun? <b><a href="{{ url('login') }}" class="login-text">Masuk</a></b></p>

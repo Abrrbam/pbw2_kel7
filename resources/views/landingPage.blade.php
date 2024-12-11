@@ -24,9 +24,8 @@
           </div>
         </div>
           <a href="{{ url('/login') }}" class="login-btn">Login</a>
-          <a href="{{ url('/login') }}" class="login-btn">Guest</a>
+          <a href="{{ url('/home') }}" class="login-btn">Guest</a>
       </nav>
-
     </header>
 
     <section class="home" id="home" style="background-color: #fff1f2;">
